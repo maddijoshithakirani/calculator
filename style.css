@@ -1,0 +1,168 @@
+/* style.css */
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    /* A very unique, deep sunset/cyberpunk gradient */
+    background: linear-gradient(135deg, #090910 0%, #1f1b2e 50%, #3b184e 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+/* Background ambient glow */
+body::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 63, 108, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+    top: -100px;
+    left: -100px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(108, 92, 231, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+    bottom: -150px;
+    right: -100px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.calculator-container {
+    z-index: 1; /* Stay above the ambient glow */
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+/* Glassmorphism Calculator Body */
+.calculator {
+    background: rgba(30, 27, 46, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Screen Display */
+.display {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    word-wrap: break-word;
+    word-break: break-all;
+    min-height: 120px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.previous-operand {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.2rem;
+    min-height: 24px;
+}
+
+.current-operand {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* Button Grid layout */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+/* Base button styling */
+.btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-radius: 16px;
+    padding: 16px 0;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Special button states and colors */
+.span-two {
+    grid-column: span 2;
+}
+
+/* The AC and DEL buttons get a unique teal/cyan shade */
+.btn-action {
+    color: #00d2d3;
+    background: rgba(0, 210, 211, 0.1);
+    font-weight: 700;
+}
+
+.btn-action:hover {
+    background: rgba(0, 210, 211, 0.2);
+}
+
+/* Operators get a vibrant pink/coral shade */
+.btn-operator {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    font-weight: 700;
+}
+
+.btn-operator:hover {
+    background: rgba(255, 107, 107, 0.2);
+}
+
+/* The equals button stands out */
+.btn-equals {
+    background: linear-gradient(135deg, #ff6b6b, #ee5253);
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(238, 82, 83, 0.3);
+    border: none;
+}
+
+.btn-equals:hover {
+    background: linear-gradient(135deg, #ff7b7b, #f06263);
+    box-shadow: 0 6px 20px rgba(238, 82, 83, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-equals:active {
+    transform: translateY(0) scale(0.95);
+}
